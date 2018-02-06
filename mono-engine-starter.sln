@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mono-engine-starter", "mono-engine-starter\mono-engine-starter.csproj", "{90F31D49-E534-4B47-A031-D26D170CF450}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90F31D49-E534-4B47-A031-D26D170CF450}.Debug|x86.ActiveCfg = Debug|x86
+		{90F31D49-E534-4B47-A031-D26D170CF450}.Debug|x86.Build.0 = Debug|x86
+		{90F31D49-E534-4B47-A031-D26D170CF450}.Release|x86.ActiveCfg = Release|x86
+		{90F31D49-E534-4B47-A031-D26D170CF450}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6A72A67C-7EC0-4829-893D-4C27E445ABDB}
+	EndGlobalSection
+EndGlobal
