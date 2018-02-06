@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace mono_engine_starter
+namespace engine
 {
 #if WINDOWS || LINUX
     /// <summary>

@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace mono_engine_starter
+namespace engine
 {
     /// <summary>
     /// This is the main type for your game.
