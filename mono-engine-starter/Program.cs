@@ -14,7 +14,7 @@ namespace mono_engine_starter
         [STAThread]
         static void Main()
         {
-            using (var game = new Game1())
+            using (var game = new MonoEngine())
                 game.Run();
         }
     }
