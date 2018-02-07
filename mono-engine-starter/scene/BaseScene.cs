@@ -15,17 +15,25 @@ namespace engine.scene
         public bool Initialized { get; private set; }
 
         // lifecycle methods
-        public virtual void OnInitialize()
+        public virtual void OnInitialize(MonoEngine engine)
         {
             Initialized = true;
         }
-        public virtual void OnActivate()
+
+        public virtual void OnActivate(MonoEngine engine)
         {
-            Entities.ForEach(entity => entity.OnActivate());
+            Entities.ForEach(entity => {
+                if (!entity.Initialized)
+                {
+                    entity.OnInitialize(engine);
+                }          
+                entity.OnActivate(engine);
+            });
         }
-        public virtual void OnDeactivate()
+
+        public virtual void OnDeactivate(MonoEngine engine)
         {
-            Entities.ForEach(entity => entity.OnDeactivate());
+            Entities.ForEach(entity => entity.OnDeactivate(engine));
         }
 
         // engine methods
@@ -33,6 +41,7 @@ namespace engine.scene
         {
             Entities.ForEach(entity => entity.Draw(spriteBatch));
         }
+
         public void Update(MonoEngine engine, GameTime gameTime)
         {
             Entities.ForEach(entity => entity.Update(engine, gameTime));

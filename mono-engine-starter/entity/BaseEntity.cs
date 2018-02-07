@@ -16,12 +16,12 @@ namespace engine.entity
         public bool Initialized { get; private set; }
 
         // lifecycle methods
-        public virtual void OnInitialize()
+        public virtual void OnInitialize(MonoEngine engine)
         {
             Initialized = true;
         }
-        public virtual void OnActivate() { }
-        public virtual void OnDeactivate() { }
+        public virtual void OnActivate(MonoEngine engine) { }
+        public virtual void OnDeactivate(MonoEngine engine) { }
 
         // engine methods
         public virtual void Draw(SpriteBatch spriteBatch)

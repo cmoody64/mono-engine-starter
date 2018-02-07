@@ -93,7 +93,16 @@ namespace engine
 
         public void GoToScene(string sceneName)
         {
-            scenes.TryGetValue("sceneName", out currentScene);
+            if(scenes.TryGetValue("sceneName", out currentScene))
+            {
+                // if the engine successfully switched to the desired scene Activate and / or initialize the new scene
+                if(!currentScene.Initialized)
+                {
+                    currentScene.OnInitialize();
+                }
+
+                currentScene.OnActivate();
+            }
         }
     }
 }
