@@ -98,10 +98,10 @@ namespace engine
                 // if the engine successfully switched to the desired scene Activate and / or initialize the new scene
                 if(!currentScene.Initialized)
                 {
-                    currentScene.OnInitialize();
+                    currentScene.OnInitialize(this);
                 }
 
-                currentScene.OnActivate();
+                currentScene.OnActivate(this);
             }
         }
     }
