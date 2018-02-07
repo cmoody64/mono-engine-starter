@@ -21,6 +21,6 @@ namespace engine.entity
             spriteBatch.Draw(Texture, destinationRectange, Color.White);
         }
 
-        public virtual void Update(GameTime gameTime) {}
+        public virtual void Update(MonoEngine engine, GameTime gameTime) {}
     }
 }

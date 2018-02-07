@@ -1,6 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using engine.scene;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace engine
 {
@@ -11,6 +13,8 @@ namespace engine
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Dictionary<string, BaseScene> scenes;
+        BaseScene currentScene;
 
         public MonoEngine()
         {
@@ -26,8 +30,9 @@ namespace engine
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
+            scenes = new Dictionary<string, BaseScene>();
+            currentScene = null;
+            
             base.Initialize();
         }
 
@@ -40,7 +45,6 @@ namespace engine
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
         }
 
         /// <summary>
@@ -49,7 +53,6 @@ namespace engine
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
         }
 
         /// <summary>
@@ -62,7 +65,8 @@ namespace engine
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            if (currentScene != null)
+                currentScene.Update(this, gameTime);
 
             base.Update(gameTime);
         }
@@ -75,9 +79,17 @@ namespace engine
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            spriteBatch.Begin();
+            if (currentScene != null)
+                currentScene.Draw(spriteBatch);
+            spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        public void GoToScene(string sceneName)
+        {
+            scenes.TryGetValue("sceneName", out currentScene);
         }
     }
 }
