@@ -13,7 +13,17 @@ namespace engine.entity
         public abstract Texture2D Texture { get; protected set; }
         public abstract Point Pos { get; protected set; }
         public abstract Point Scale { get; protected set; }
+        public bool Initialized { get; private set; }
 
+        // lifecycle methods
+        public virtual void OnInitialize()
+        {
+            Initialized = true;
+        }
+        public virtual void OnActivate() { }
+        public virtual void OnDeactivate() { }
+
+        // engine methods
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             var scale = new Point(Texture.Width * Scale.X, Texture.Height * Scale.Y);
@@ -22,5 +32,6 @@ namespace engine.entity
         }
 
         public virtual void Update(MonoEngine engine, GameTime gameTime) {}
+
     }
 }

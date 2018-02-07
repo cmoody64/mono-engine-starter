@@ -19,8 +19,14 @@ namespace engine.scene
         {
             Initialized = true;
         }
-        public virtual void OnActivate() { }
-        public virtual void OnDeactivate() { }
+        public virtual void OnActivate()
+        {
+            Entities.ForEach(entity => entity.OnActivate());
+        }
+        public virtual void OnDeactivate()
+        {
+            Entities.ForEach(entity => entity.OnDeactivate());
+        }
 
         // engine methods
         public void Draw(SpriteBatch spriteBatch)
@@ -29,7 +35,7 @@ namespace engine.scene
         }
         public void Update(MonoEngine engine, GameTime gameTime)
         {
-            Entities.ForEach(entity => entity.Update(gameTime));
+            Entities.ForEach(entity => entity.Update(engine, gameTime));
         }
 
     }
