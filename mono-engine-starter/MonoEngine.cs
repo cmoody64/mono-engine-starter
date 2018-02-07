@@ -15,6 +15,8 @@ namespace engine
         SpriteBatch spriteBatch;
         Dictionary<string, BaseScene> scenes;
         BaseScene currentScene;
+        
+        public KeyboardState KeyboardState { get; private set; }
 
         public MonoEngine()
         {
@@ -64,6 +66,8 @@ namespace engine
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            KeyboardState = Keyboard.GetState();
 
             if (currentScene != null)
                 currentScene.Update(this, gameTime);
